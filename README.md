@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Gokul Joshi — Video Editor Portfolio
 
 A premium black-&-gold creative-agency portfolio for a professional video editor.
@@ -106,3 +107,7 @@ Works anywhere Next.js runs. Easiest is **Vercel**:
 - SEO: metadata, Open Graph, Twitter card, JSON-LD Person schema, `sitemap.xml`,
   `robots.txt`
 - Fully responsive, custom cursor (desktop), reduced-motion friendly
+=======
+# myportfolio
+video editing
+>>>>>>> 43225e29f586bb4456f2ad7347768cfef5f2758a
