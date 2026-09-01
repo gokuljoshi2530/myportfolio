@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts wired to next/font CSS variables (set on <html>) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Brand palette — premium black & gold */
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #121212;
+  --color-gold: #d4af37;
+  --color-gold-light: #f6e27a;
+  --color-gold-dark: #a17c1a;
+}
+
+@layer base {
+  html {
+    /* Lenis owns smooth scrolling — do NOT set scroll-behavior: smooth (they fight) */
+    scroll-behavior: auto;
+    scrollbar-color: var(--color-gold-dark) var(--color-ink);
+  }
+
+  body {
+    background: var(--color-ink);
+    color: #ededed;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--color-gold), var(--color-gold-dark));
+    border-radius: 10px;
+  }
+
+  /* Custom cursor: hide native cursor on precise pointers only */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+  /* Hide the custom cursor entirely on touch devices */
+  @media (pointer: coarse) {
+    .cursor-root {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .marquee {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-strong {
+    background: rgba(18, 18, 18, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* 1px gradient-gold frame (works over images & dark panels) */
+  .gold-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--color-ink), var(--color-ink)) padding-box,
+      linear-gradient(135deg, rgba(246, 226, 122, 0.6), rgba(161, 124, 26, 0.25)) border-box;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(120deg, #f6e27a 0%, #d4af37 50%, #a17c1a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-glow {
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 42%,
+      rgba(212, 175, 55, 0.14),
+      transparent 60%
+    );
+  }
+
+  .glow-corner {
+    background: radial-gradient(
+      circle at top right,
+      rgba(212, 175, 55, 0.18),
+      transparent 60%
+    );
+  }
+
+  .section-py {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .container-px {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-py {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+    .container-px {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Fixed ambient gold glows behind all content */
+  .bg-glows {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 30% at 82% 8%, rgba(212, 175, 55, 0.1), transparent 60%),
+      radial-gradient(36% 26% at 8% 82%, rgba(212, 175, 55, 0.07), transparent 60%);
+  }
+
+  /* Subtle film grain on top of everything (below nav/cursor/loader) */
+  .noise {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.025;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .marquee {
+    animation: marquee 24s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
