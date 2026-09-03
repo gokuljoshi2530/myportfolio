@@ -40,7 +40,7 @@ export default function AnimatedText({
             key={i}
             style={{
               display: "inline-block",
-              overflow: "hidden",
+              overflow: "visible",
               verticalAlign: "bottom",
             }}
           >

@@ -54,14 +54,11 @@ export default function Hero() {
           {siteConfig.role}
         </motion.span>
 
-        <h1 className="font-display text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl">
-          <AnimatedText text="Turning Raw Footage Into" className="block" delay={2.3} />
-          <AnimatedText
-            text="Engaging Stories"
-            className="text-gradient-gold block"
-            delay={2.5}
-          />
-        </h1>
+      <h1 className="font-display text-4xl font-semibold leading-[1.15] sm:text-6xl md:text-7xl">
+  <span className="block">
+    Turning Raw Footage Into Engaging Stories
+  </span>
+</h1>
 
         <motion.p
           initial={{ opacity: 0 }}

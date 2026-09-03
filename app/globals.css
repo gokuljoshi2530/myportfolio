@@ -101,7 +101,7 @@
     background: linear-gradient(120deg, #f6e27a 0%, #d4af37 50%, #a17c1a 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: #f6e27a;
   }
 
   .hero-glow {
